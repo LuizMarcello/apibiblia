@@ -7,6 +7,7 @@ use App\Http\Controllers\TestamentoController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\VersaoController;
 use App\Http\Controllers\VersiculoController;
+use App\Http\Controllers\SiteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Expr\FuncCall;
@@ -58,6 +59,8 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
-
-
 Route::post('/uploads', [UploadController::class, 'store']);
+
+/* Site público */
+Route::get('/site/{idVersao}', [SiteController::class, 'ler_a_biblia']);
+
