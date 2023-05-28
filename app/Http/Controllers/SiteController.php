@@ -25,17 +25,19 @@ class SiteController extends Controller {
                  $query->when($livro, function($query) use($livro) {
                      $query->where('abreviacao', $livro);
                });
+            //})->capitulo($capitulo)
+            /* Usando os "Scope Filters": Aqui e no Model "Versiculos.php" */
+            })->filters(['capitulo' => $capitulo, 'versiculo' => $versiculo])
                /* "when()": Quando a variável "$capitulo" tiver algum valor
                    ele entra na função, senão tiver valor, não faz o filtro,
                    porque ele não é um parâmetro obrigatório na url */
-            })->when($capitulo, function($query) use($capitulo) {
-                $query->where('capitulo', $capitulo);
+                //->when($capitulo, function($query) use($capitulo) {
+                //$query->where('capitulo', $capitulo);
                 /* "when()": Quando a variável "$versículo" tiver algum valor
                    ele entra na função, senão tiver valor, não faz o filtro,
                    porque ele não é um parâmetro obrigatório na url */
-            })->when($versiculo, function($query) use ($versiculo) {
-                $query->where('versiculo', $versiculo);
-            })->get();
+            //})
+            ->get();
         /* Retorna então após o filtro, somente os versiculos com a
            versão(nvi no caso), livro, capitulo e versiculo inseridos
            na url /site/{versao}/{livro?}/{capitulo?}/{versiculo?} */
