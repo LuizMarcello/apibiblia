@@ -62,5 +62,6 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/uploads', [UploadController::class, 'store']);
 
 /* Site público */
-Route::get('/site/{idVersao}', [SiteController::class, 'ler_a_biblia']);
+Route::get('/site/{versao}/{livro?}/{capitulo?}/{versiculo?}',
+ [SiteController::class, 'ler_a_biblia']);
 
