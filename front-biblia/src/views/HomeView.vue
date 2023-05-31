@@ -14,3 +14,30 @@
     </div>
   </div>
 </template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  name: 'VersiculoDoDia',
+  data() {
+    return {
+      versiculoDoDiaaa: Array,
+    }
+  },
+  created() {
+    this.getVersiculoDoDia();
+  },
+  methods: {
+    async getVersiculoDoDia() {
+      let url = 'http://127.0.0.1:8000/api/site';
+      await axios.get(url).then(response => {
+        console.log(response);
+        this.versiculoDoDiaaa = response.data;
+      }).catch(error => {
+        console.log(error);
+      })
+    }
+  }
+}
+</script>

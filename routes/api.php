@@ -61,7 +61,9 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/uploads', [UploadController::class, 'store']);
 
-/* Site público */
+/* Sites públicos */
+Route::get('/site', [SiteController::class, 'index']);
+
 Route::get('/site/{versao}/{livro?}/{capitulo?}/{versiculo?}',
  [SiteController::class, 'ler_a_biblia']);
 
